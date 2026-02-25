@@ -2,3 +2,22 @@
 
 ### Welcome GET /
 GET {{BASE_URL}}
+
+### Users GET /users
+GET {{BASE_URL}}/users
+
+### Posts GET /posts
+GET {{BASE_URL}}/posts
+
+### User GET /users/:id
+GET {{BASE_URL}}/users/1
+
+### User POST /users
+POST {{BASE_URL}}/users
+Content-Type: application/json
+
+{
+    "email": "Jammy009@gmail.com",
+    "name": "jack",
+    "age": 50
+}
