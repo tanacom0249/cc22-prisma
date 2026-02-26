@@ -34,12 +34,12 @@ model Post {
 
 //lab1
 model Student {
-  id          Int       @id @default(autoincrement())
-  name        String
-  email       String    @unique
-  classroomId Int?
-  classroom   Classroom? @relation(fields: [classroomId], references: [id], onDelete: Cascade)
-  activities Activity[]
+  id                Int               @id @default(autoincrement())
+  name              String
+  email             String            @unique
+  classroomId       Int?
+  classroom         Classroom?        @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+  activities        Activity[]
   studentActivities StudentActivity[]
 }
 
@@ -55,9 +55,9 @@ model Classroom {
 model Product {
   id    Int    @id @default(autoincrement())
   name  String
-  price Int @default(0)
-  stock Int @default(0)
-  orderItems OrderItem[]
+  price Int    @default(0)
+  stock Int    @default(0)
+  //orderItems OrderItem[]
 }
 
 model Order {
@@ -70,13 +70,12 @@ model Order {
 }
 
 model OrderItem {
-  id          Int   @id @default(autoincrement())
-  orderId     Int?
-  productId   Int?
-  quantity    Int
-  priceAtTime Int
-  order   Order?   @relation(fields: [orderId], references: [id])
-  product Product? @relation(fields: [productId], references: [id])
+  id       Int    @id @default(autoincrement())
+  orderId  Int?
+  //productId   Int?
+  quantity Int
+  order    Order? @relation(fields: [orderId], references: [id])
+  //product Product? @relation(fields: [productId], references: [id])
 }
 
 //lab5
@@ -87,18 +86,19 @@ enum ActivityType {
 }
 
 model Activity {
-  id   Int  @id @default(autoincrement())
-  title String
-  type  ActivityType
-  students Student[]
+  id                Int               @id @default(autoincrement())
+  title             String
+  type              ActivityType
+  students          Student[]
   studentActivities StudentActivity[]
 }
 
 model StudentActivity {
-  studentId Int
+  studentId  Int
   activityId Int
-  joinDate DateTime @default(now())
-  student Student @relation(fields: [studentId], references: [id])
-  activity Activity @relation(fields: [activityId], references: [id])
+  joinDate   DateTime @default(now())
+  student    Student  @relation(fields: [studentId], references: [id])
+  activity   Activity @relation(fields: [activityId], references: [id])
+
   @@unique([studentId, activityId])
 }

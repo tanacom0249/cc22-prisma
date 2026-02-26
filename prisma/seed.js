@@ -2,19 +2,27 @@ import prisma from "../src/prismaClient.js";
 import { faker } from "@faker-js/faker";
 
 async function main() {
+  //await prisma.product.deleteMany();
   await prisma.product.createMany({
-    data: Array.from({ length: 20 }).map(() => ({
-      name: faker.commerce.productName(),
-      price: parseFloat(faker.commerce.price()),
-      stock: faker.number.int({ min: 0, max: 100 }),
-    })),
+    data: [
+      {
+        name: "keyboard",
+        price: 2500,
+        stock: 20,
+      },
+      {
+        name: "mouse",
+        price: 100,
+        stock: 3,
+      },
+    ],
   });
 
-  await prisma.user.createMany({
+  await prisma.product.createMany({
     data: Array.from({ length: 10 }).map(() => ({
-      name: faker.person.fullName(),
-      email: faker.internet.email(),
-      age: faker.number.int({ min: 10, max: 60 }),
+      name: faker.commerce.productName(),
+      price: Number(faker.commerce.price()),
+      stock: faker.number.int({ min: 10, max: 60 }),
     })),
   });
 }

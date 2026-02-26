@@ -21,3 +21,9 @@ Content-Type: application/json
     "name": "jack",
     "age": 50
 }
+
+### Products Count /products/count
+GET {{BASE_URL}}/products/count
+
+### Products Detail /products/detail
+GET {{BASE_URL}}/products/detail
